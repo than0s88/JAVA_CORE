@@ -8,7 +8,7 @@ public class Main {
         array.insert(20);
         array.insert(30);
         array.insert(40);
-        //array.remove(3);
+        array.remove(3);
         array.print();
 
         System.out.println("The index is: " +array.search(20));
