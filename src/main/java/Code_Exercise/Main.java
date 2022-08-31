@@ -7,6 +7,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        FactorialRecursion obj = new FactorialRecursion();
         Factorial obj1 = new Factorial();
         FactorialArray obj2 = new FactorialArray();
         ArrayUpperCase obj3 = new ArrayUpperCase();
@@ -34,7 +35,9 @@ public class Main {
         stringArrayList.add("TONIE");
         stringArrayList.add("ELVIE");
 
-        System.out.println("Factorial "+obj1.factorial(4));
+        System.out.println("Factorial Recursion: "+ obj.factorialRecursionMethod(6));
+
+        System.out.println("Factorial: "+obj1.factorial(4));
 
         System.out.println("Factorial Array: "+obj2.factorialArray(list));
 

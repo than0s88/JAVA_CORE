@@ -44,49 +44,24 @@ public class Main {
         ll3.next = ll4;
         ll4.next = null;
 
-
-
-        int total, modulo, remainder= 0;
-
-
-
-        remainder = (9 + 9)/10;
-        total = remainder + 9 + 9;
-        modulo = total % 10;
-
-        System.out.println("total: "+total);
-        System.out.println("modulo: "+modulo);
-        System.out.println("remainder: "+remainder);
-
-        System.out.println("////////////////////");
         display(addTwoNumbers(l1,ll1));
-//
-//
-//        int modulo = (4 + 4) % 10;
-//        int remainder = (4 + 6) / 10;
-//        System.out.println("modulo: "+modulo);
-//        System.out.println("remainder: "+remainder);
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         ListNode head = new ListNode(0);
         ListNode temp = head;
-        int total, modulo, remainder= 0;
+        int remainder= 0;
 
-        while (l1!=null && l2!=null){
+        while (l1!=null || l2!=null || remainder !=0 ){
 
-            if (l1.next == null){
-                l1.val = 0;
-            }
-            if (l2.next == null){
-                l2.val = 0;
-            }
-            remainder = (l1.val + l2.val)/10;
-            total = remainder+ l1.val + l2.val;
-            modulo = total % 10;
+        int x = (l1!=null) ? l1.val : 0;
+        int y = (l2!=null) ? l2.val : 0;
 
-            temp.next = new ListNode(modulo);
+            int total = remainder+ x+y;
+            remainder = total/10;
+
+            temp.next = new ListNode(total %10);
             temp = temp.next;
 
             if (l1!=null)
@@ -96,50 +71,6 @@ public class Main {
         }
         return head.next;
     }
-
-//    public static void addTwoNumbers(ListNode l1, ListNode l2) {
-
-//        ListNode node = new SinglyLinkedList.SinglyLinkedList.ListNode(data);
-//        node.next = head;
-//        head = node;
-//        ListNode sum = new ListNode(0);
-//        ListNode node = null;
-//        int total, remainder= 0;
-//
-//        while (l1!=null && l2!=null){
-//
-//            total = remainder+ l1.val + l2.val;
-//            remainder = (l1.val + l2.val)/10;
-//
-//            if (total%10==0){
-//                total=0;
-//            }
-//
-//            node = new ListNode(total);
-//            node.next = sum;
-//            sum = node;
-//
-//
-//
-//
-//            System.out.print(sum.val+"-->");
-//
-//            l1 = l1.next;
-//            l2 = l2.next;
-//
-//        }
-//        sum.next=null;
-//        System.out.println("null");
-//
-//        if (sum.next==null){
-//            System.out.println("return is null");
-//        }else{
-//            System.out.println("has values");
-//        }
-//
-//    }
-
-
     public static void display(ListNode node){
         ListNode temp = node;
         while (temp!=null){
