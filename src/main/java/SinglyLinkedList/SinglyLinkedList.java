@@ -42,16 +42,9 @@ public class SinglyLinkedList {
         twelve.next = thirteen;
         thirteen.next = null;
 
-        //singly.getLength();
-//        singly.printNode(singly.head);
-//
-//        ListNode reverseSinglyList =  singly.reverseSinglyLinkedList(singly.head);
-//        singly.printNode(reverseSinglyList);
+        singly.deleteNodeWithKey(2);
+        singly.deleteNodeAtBeginning();
         singly.printNode(singly.head);
-        ListNode middleNode = singly.findMiddleNode();
-        System.out.println(middleNode.data);
-
-        System.out.println(singly.head.next.next.data);
     }
 
     public void insertNodeAtBeginning(int data){
@@ -62,7 +55,7 @@ public class SinglyLinkedList {
     }
 
     public void insertNodeAtLast(int data){
-        ListNode node = new ListNode(5);
+        ListNode node = new ListNode(data);
         ListNode temp = head;
         while (temp.next != null){
             temp = temp.next;
@@ -87,8 +80,6 @@ public class SinglyLinkedList {
             temp.next = node;
             node.next = temp2;
         }
-
-
     }
 
     public void deleteNodeAtBeginning(){
@@ -113,9 +104,10 @@ public class SinglyLinkedList {
             ListNode temp = head.next;
             head = temp;
         }else{
-            int count = 1;
+
+            int count = 0;
             ListNode temp = head;
-            while (count < position - 1){
+            while (count < position){
                 temp = temp.next;
                 count++;
             }
@@ -123,6 +115,21 @@ public class SinglyLinkedList {
             temp.next = temp2.next;
         }
     }
+
+    public void deleteNodeWithKey(int data){
+
+        ListNode temp = head;
+        ListNode current = null;
+
+            while (temp!=null && temp.data != data){
+                current = temp;
+                temp = temp.next;
+            }
+            if (current==null) return;
+            current.next = temp.next;
+
+    }
+
     public void printNode(ListNode head){
         ListNode temp = head;
         while (temp != null){

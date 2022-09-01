@@ -1,4 +1,4 @@
-package LeetCode.Easy.Problem_3;
+package LeetCode.Easy.Problem_9;
 
 public class Palindrome {
 

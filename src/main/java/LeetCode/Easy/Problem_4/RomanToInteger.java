@@ -6,7 +6,9 @@ public class RomanToInteger {
     public static void main(String[] args) {
 
         //romanToInt("MCMXCIV");
-        System.out.println(romanToInt("LVIII")); //1994
+        String romanNum = "LVIII";
+        System.out.println("Roman Numeral: "+romanNum);
+        System.out.println("Decimal: "+romanToInt(romanNum)); //1994
     }
     public static int romanToInt(String s) {
 
