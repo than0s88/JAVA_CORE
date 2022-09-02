@@ -7,7 +7,7 @@ public class twoSumOfArray {
     public static void main(String[] args) {
         int[] arr = {3,2,4};
         System.out.println(Arrays.toString(twoSumOfArrayMethod(arr,6)));
-        //twoSumOfArray(arr,6);
+
     }
     public static int[] twoSumOfArrayMethod(int[] nums, int target) {
 
