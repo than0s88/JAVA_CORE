@@ -1,5 +1,7 @@
 package SinglyLinkedList;
 
+import java.util.LinkedList;
+
 public class SinglyLinkedList {
     private ListNode head;
 
@@ -13,6 +15,7 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
+        LinkedList<String> test = new LinkedList<>();
         SinglyLinkedList singly = new SinglyLinkedList();
         singly.head = new ListNode(1);
         ListNode second = new ListNode(2);
