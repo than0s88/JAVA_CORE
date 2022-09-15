@@ -1,18 +1,19 @@
 package Singly_LinkedList;
 
+import java.util.List;
+
 public class FindMiddleNode {
-    public int findMiddleNode(ListNode head){
+    public ListNode findMiddleNode(ListNode head){
 
         if (head == null){
-            return head.data;
+            return null;
         }
-
         ListNode slow = head;
         ListNode fast = head;
-        while (slow !=null && fast.next != null){
+        while (fast!=null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
-        return slow.data;
+        return slow;
     }
 }

@@ -37,10 +37,11 @@ public class Main {
         NthNodeBeforeEnd obj3 = new NthNodeBeforeEnd();
         FindMiddleNode obj4 = new FindMiddleNode();
         InsertNodeAtBeginning obj5 = new InsertNodeAtBeginning();
+        PrintSinglyLinkedList obj6 = new PrintSinglyLinkedList();
 
-        obj5.insertNodeAtBeginning(head,999);
+
         obj.printSinglyLinkedList(head);
-//        System.out.println(obj3.nthNodeBeforeEnd(head));
-//        System.out.println(obj4.findMiddleNode(head));
+        System.out.println(obj4.findMiddleNode(head).data);
+
     }
 }

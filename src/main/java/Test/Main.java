@@ -9,5 +9,12 @@ public class Main {
         int num = 313;
         char str = String.valueOf(313).charAt(0);
         System.out.println(str);
+
+        char a = 'a';
+        char b = 'b';
+
+        if (a == b){
+            
+        }
     }
 }

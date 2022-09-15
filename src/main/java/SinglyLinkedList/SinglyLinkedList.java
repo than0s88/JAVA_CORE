@@ -15,9 +15,22 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
-        LinkedList<String> test = new LinkedList<>();
         SinglyLinkedList singly = new SinglyLinkedList();
         singly.head = new ListNode(1);
+//        ListNode node2 = new ListNode(2);
+//        ListNode node3 = new ListNode(3);
+//        ListNode node4 = new ListNode(4);
+//        ListNode node5 = new ListNode(5);
+//        ListNode node6 = new ListNode(6);
+//
+//        singly.head.next = node2;
+//        node2.next = node3;
+//        node3.next = node4;
+//        node4.next = node5;
+//        node5.next = node6;
+//        node6.next = null;
+
+
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
         ListNode fourth = new ListNode(4);
@@ -45,42 +58,51 @@ public class SinglyLinkedList {
         twelve.next = thirteen;
         thirteen.next = null;
 
-//        singly.deleteNodeWithKey(2);
-//        singly.deleteNodeAtBeginning();
-//        singly.printNode(singly.head);
+        singly.printNode();
+        System.out.println(singly.findMiddleNode().data);
 
 
-        System.out.println(singly.detectLoop());
+//        SinglyLinkedList ll1 = new SinglyLinkedList();
+//        ll1.insertNodeAtLast(1);
+//        ll1.insertNodeAtLast(4);
+//        ll1.insertNodeAtLast(8);
+//
+//        SinglyLinkedList ll2 = new SinglyLinkedList();
+//        ll2.insertNodeAtLast(3);
+//        ll2.insertNodeAtLast(5);
+//        ll2.insertNodeAtLast(8);
+//
+//        ll1.printNode();
+//        ll2.printNode();
+//
+//        SinglyLinkedList result = new SinglyLinkedList();
+//        result.head = mergeListNode(ll1.head, ll2.head);
+//        result.printNode();
 
     }
 
-    public boolean detectLoop(){
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
-        ListNode node6 = new ListNode(6);
+    public void detectLoopAndRemoveLoop(ListNode head){
 
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = node6;
-        node6.next = node3;
+        ListNode slow = head;
+        ListNode fast = head;
 
-        ListNode slow = node1;
-        ListNode fast = node1;
-
-        while (fast!=null){
+        while (slow.next != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
             if (slow == fast){
-                return true;
+            removeLoop(slow);
+            break;
             }
         }
+    }
 
-        return false;
+    public void removeLoop(ListNode slow){
+        ListNode temp = head;
+        while (temp.next != slow.next){
+            temp = temp.next;
+            slow = slow.next;
+        }
+        slow.next = null;
     }
 
     public void insertNodeAtBeginning(int data){
@@ -92,6 +114,10 @@ public class SinglyLinkedList {
 
     public void insertNodeAtLast(int data){
         ListNode node = new ListNode(data);
+        if (head ==null){
+           head = node;
+           return;
+        }
         ListNode temp = head;
         while (temp.next != null){
             temp = temp.next;
@@ -131,8 +157,6 @@ public class SinglyLinkedList {
             temp = temp.next;
         }
         tempNull.next = null;
-
-
     }
 
     public void deleteNodeAnywhere(int position){
@@ -163,10 +187,9 @@ public class SinglyLinkedList {
             }
             if (current==null) return;
             current.next = temp.next;
-
     }
 
-    public void printNode(ListNode head){
+    public void printNode(){
         ListNode temp = head;
         while (temp != null){
             System.out.print("["+temp.data+"]-->");
@@ -224,7 +247,7 @@ public class SinglyLinkedList {
 
         ListNode slow = head;
         ListNode fast = head;
-        while (slow !=null && fast.next != null){
+        while (fast !=null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -237,11 +260,29 @@ public class SinglyLinkedList {
         if (position==1){
             return head;
         }
-
-
         return temp;
     }
 
+    public static ListNode mergeListNode(ListNode a, ListNode b){
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        while(a != null && b != null){
+            if (a.data <= b.data){
+                tail.next = a;
+                a = a.next;
+            }else{
+                tail.next = b;
+                b.next = b;
+            }
+            tail = tail.next;
+        }
+        
+        if (a == null){
+            tail.next = a;
+        }else{
+            tail.next = b;
+        }
+        return dummy.next;
 
-
+    }
 }
