@@ -18,69 +18,78 @@ public class SinglyLinkedList {
         LinkedList<String> test = new LinkedList<>();
         SinglyLinkedList singly = new SinglyLinkedList();
         singly.head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode fourth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode six = new ListNode(6);
-        ListNode seven = new ListNode(7);
-        ListNode eight = new ListNode(8);
-        ListNode nine = new ListNode(9);
-        ListNode ten = new ListNode(10);
-        ListNode eleven = new ListNode(11);
-        ListNode twelve = new ListNode(12);
-        ListNode thirteen = new ListNode(13);
-
-        singly.head.next = second;
-        second.next = third;
-        third.next = fourth;
-        fourth.next = fifth;
-        fifth.next = six;
-        six.next = seven;
-        seven.next = eight;
-        eight.next = nine;
-        nine.next = ten;
-        ten.next = eleven;
-        eleven.next = twelve;
-        twelve.next = thirteen;
-        thirteen.next = null;
-
-//        singly.deleteNodeWithKey(2);
-//        singly.deleteNodeAtBeginning();
-//        singly.printNode(singly.head);
-
-
-        System.out.println(singly.detectLoop());
-
-    }
-
-    public boolean detectLoop(){
-        ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
         ListNode node6 = new ListNode(6);
 
-        node1.next = node2;
+        singly.head.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
         node5.next = node6;
         node6.next = node3;
 
-        ListNode slow = node1;
-        ListNode fast = node1;
 
-        while (fast!=null){
+//        ListNode second = new ListNode(2);
+//        ListNode third = new ListNode(3);
+//        ListNode fourth = new ListNode(4);
+//        ListNode fifth = new ListNode(5);
+//        ListNode six = new ListNode(6);
+//        ListNode seven = new ListNode(7);
+//        ListNode eight = new ListNode(8);
+//        ListNode nine = new ListNode(9);
+//        ListNode ten = new ListNode(10);
+//        ListNode eleven = new ListNode(11);
+//        ListNode twelve = new ListNode(12);
+//        ListNode thirteen = new ListNode(13);
+//
+//        singly.head.next = second;
+//        second.next = third;
+//        third.next = fourth;
+//        fourth.next = fifth;
+//        fifth.next = six;
+//        six.next = seven;
+//        seven.next = eight;
+//        eight.next = nine;
+//        nine.next = ten;
+//        ten.next = eleven;
+//        eleven.next = twelve;
+//        twelve.next = thirteen;
+//        thirteen.next = null;
+
+//        singly.deleteNodeWithKey(2);
+//        singly.deleteNodeAtBeginning();
+//        singly.printNode(singly.head);
+
+
+        singly.detectLoopAndRemoveLoop(singly.head);
+        singly.printNode(singly.head);
+    }
+
+    public void detectLoopAndRemoveLoop(ListNode head){
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (slow.next != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
             if (slow == fast){
-                return true;
+            removeLoop(slow);
+            break;
             }
         }
+    }
 
-        return false;
+    public void removeLoop(ListNode slow){
+        ListNode temp = head;
+        while (temp.next != slow.next){
+            temp = temp.next;
+            slow = slow.next;
+        }
+        slow.next = null;
     }
 
     public void insertNodeAtBeginning(int data){
@@ -131,8 +140,6 @@ public class SinglyLinkedList {
             temp = temp.next;
         }
         tempNull.next = null;
-
-
     }
 
     public void deleteNodeAnywhere(int position){
