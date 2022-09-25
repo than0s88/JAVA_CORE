@@ -1,6 +1,9 @@
 package SinglyLinkedList;
 
+import LeetCode.Easy.Problem_2.ListNode;
+
 import java.util.LinkedList;
+import java.util.List;
 
 public class SinglyLinkedList {
     private ListNode head;
@@ -31,46 +34,50 @@ public class SinglyLinkedList {
 //        node6.next = null;
 
 
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode fourth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode six = new ListNode(6);
-        ListNode seven = new ListNode(7);
-        ListNode eight = new ListNode(8);
-        ListNode nine = new ListNode(9);
-        ListNode ten = new ListNode(10);
-        ListNode eleven = new ListNode(11);
-        ListNode twelve = new ListNode(12);
-        ListNode thirteen = new ListNode(13);
-
-        singly.head.next = second;
-        second.next = third;
-        third.next = fourth;
-        fourth.next = fifth;
-        fifth.next = six;
-        six.next = seven;
-        seven.next = eight;
-        eight.next = nine;
-        nine.next = ten;
-        ten.next = eleven;
-        eleven.next = twelve;
-        twelve.next = thirteen;
-        thirteen.next = null;
-
-        singly.printNode();
-        System.out.println(singly.findMiddleNode().data);
-
-
-//        SinglyLinkedList ll1 = new SinglyLinkedList();
-//        ll1.insertNodeAtLast(1);
-//        ll1.insertNodeAtLast(4);
-//        ll1.insertNodeAtLast(8);
+//        ListNode second = new ListNode(2);
+//        ListNode third = new ListNode(3);
+//        ListNode fourth = new ListNode(4);
+//        ListNode fifth = new ListNode(5);
+//        ListNode six = new ListNode(6);
+//        ListNode seven = new ListNode(7);
+//        ListNode eight = new ListNode(8);
+//        ListNode nine = new ListNode(9);
+//        ListNode ten = new ListNode(10);
+//        ListNode eleven = new ListNode(11);
+//        ListNode twelve = new ListNode(12);
+//        ListNode thirteen = new ListNode(13);
 //
-//        SinglyLinkedList ll2 = new SinglyLinkedList();
-//        ll2.insertNodeAtLast(3);
-//        ll2.insertNodeAtLast(5);
-//        ll2.insertNodeAtLast(8);
+//        singly.head.next = second;
+//        second.next = third;
+//        third.next = fourth;
+//        fourth.next = fifth;
+//        fifth.next = six;
+//        six.next = seven;
+//        seven.next = eight;
+//        eight.next = nine;
+//        nine.next = ten;
+//        ten.next = eleven;
+//        eleven.next = twelve;
+//        twelve.next = thirteen;
+//        thirteen.next = null;
+//
+//        singly.printNode();
+//        System.out.println(singly.findMiddleNode().data);
+
+
+        SinglyLinkedList ll1 = new SinglyLinkedList();
+        ll1.insertNodeAtLast(3);
+        ll1.insertNodeAtLast(4);
+        ll1.insertNodeAtLast(6);
+
+        SinglyLinkedList ll2 = new SinglyLinkedList();
+        ll2.insertNodeAtLast(5);
+        ll2.insertNodeAtLast(4);
+        ll2.insertNodeAtLast(4);
+
+        SinglyLinkedList result = new SinglyLinkedList();
+        result.head = addTwoLinkedList(ll1.head, ll2.head);
+        result.printNode(result.head);
 //
 //        ll1.printNode();
 //        ll2.printNode();
@@ -197,6 +204,16 @@ public class SinglyLinkedList {
         }
         System.out.println("Null");
     }
+
+    public ListNode printNode(ListNode node){
+        ListNode temp = node;
+        while (temp != null){
+            System.out.print("["+temp.data+"]-->");
+            temp = temp.next;
+        }
+        System.out.println("Null");
+       return temp;
+    }
     public void searchNode(int position){
         ListNode temp = head;
         int count = 1;
@@ -284,5 +301,30 @@ public class SinglyLinkedList {
         }
         return dummy.next;
 
+    }
+
+    public static ListNode addTwoLinkedList(ListNode a, ListNode b){
+        ListNode temp = new ListNode(0);
+        ListNode temphead = temp;
+        int remainder = 0;
+
+        while (a!=null || b!=null || remainder !=0){
+
+            int x = (a!=null) ? a.data : 0;
+            int y = (b!=null) ? b.data : 0;
+
+            int total = remainder + x + y;
+            remainder = total/10;
+
+            temp.next = new ListNode(total %10);
+
+            if (a!=null)
+                a = a.next;
+            if (b!=null)
+                b = b.next;
+
+            temp = temp.next;
+        }
+        return temphead.next;
     }
 }

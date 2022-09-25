@@ -8,14 +8,14 @@ public class Palindrome {
 
         //System.out.println(String.valueOf(x).length());
     }
-    public static boolean isPalindrome(int x) {
-
-        int length = String.valueOf(x).length() - 1;
+    public static boolean isPalindrome(int x){
         int count = 0;
+        int length = String.valueOf(x).length() - 1;
 
-        while (count < length) {
-            if (String.valueOf(x).charAt(count++) != String.valueOf(x).charAt(length--))
+        while (count <= length){
+            if (String.valueOf(x).charAt(count++) != String.valueOf(x).charAt(length--)){
                 return false;
+            }
         }
         return true;
     }
