@@ -1,8 +1,6 @@
-package LeetCode.Easy.Problem_4;
+package LeetCode.Easy.Problem_12;
 
-import java.security.Key;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public class IntegerToRoman {
     public static void main(String[] args) {

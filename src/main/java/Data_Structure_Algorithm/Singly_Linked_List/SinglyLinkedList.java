@@ -1,9 +1,4 @@
-package SinglyLinkedList;
-
-import LeetCode.Easy.Problem_2.ListNode;
-
-import java.util.LinkedList;
-import java.util.List;
+package Data_Structure_Algorithm.Singly_Linked_List;
 
 public class SinglyLinkedList {
     private ListNode head;
@@ -82,7 +77,7 @@ public class SinglyLinkedList {
 //        ll1.printNode();
 //        ll2.printNode();
 //
-//        SinglyLinkedList result = new SinglyLinkedList();
+//        Data_Structure_Algorithm.Singly_Linked_List result = new Data_Structure_Algorithm.Singly_Linked_List();
 //        result.head = mergeListNode(ll1.head, ll2.head);
 //        result.printNode();
 

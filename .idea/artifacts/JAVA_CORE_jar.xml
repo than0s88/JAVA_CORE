@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JAVA_CORE:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JAVA_CORE_jar</output-path>
+    <root id="archive" name="JAVA_CORE.jar">
+      <element id="module-output" name="JAVA_CORE" />
+    </root>
+  </artifact>
+</component>
